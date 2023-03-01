@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+    <style>
+      table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+      }
+      
+      td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+      }
+      
+      tr:nth-child(even) {
+        background-color: #dddddd;
+      }
+      </style>
+  </head>
+  <body>
+    {% if user == "admin" %}
+    <h1>{{ header }}</h1>
+    {% else %}
+    <h1>You are not admin</h1>
+    {% endif %}
+
+    <form action="" method="post">
+      {% csrf_token %} {{ form.as_p }}
+      <input type="submit" value="Submit" />
+    </form>
+
+{% comment %} Table {% endcomment %}
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Price</th>
+  </tr>
+  {% for item in list %}
+    <tr>
+      <td>{{ item.name }}</td>
+      <td>{{ item.old }}</td>
+    </tr>
+  {% endfor %}
+</table>
+
+    <script src="" async defer></script>
+  </body>
+</html>
